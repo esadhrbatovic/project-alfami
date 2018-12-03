@@ -22,10 +22,12 @@ public class Player extends GameEntity {
 	public Texture texture;
 	public TextureRegion currentFrame;
 	float stateTime;
+	public int lives;
 	
 	public Player(float x, float y) {
 		super(x, y);
 		collisionRect = new Rectangle(x + 4, y + 8, GameConfig.TILE_SIZE - 8, GameConfig.TILE_SIZE / 2);
+		lives = 4;
 	}
 
 	@Override
