@@ -27,7 +27,7 @@ public class Player extends GameEntity {
 	public Player(float x, float y) {
 		super(x, y);
 		collisionRect = new Rectangle(x + 4, y + 8, GameConfig.TILE_SIZE - 8, GameConfig.TILE_SIZE / 2);
-		lives = 4;
+		lives = 6;
 	}
 
 	@Override

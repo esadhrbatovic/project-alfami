@@ -91,6 +91,7 @@ public class GameLevel extends GameEntity {
 		tiledMapRenderer.render(data2);
 
 		guiPlayerStats.render();
+		
 	}
 
 	@Override
