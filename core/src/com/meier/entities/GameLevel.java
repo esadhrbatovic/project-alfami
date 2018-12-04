@@ -111,13 +111,13 @@ public class GameLevel extends GameEntity {
 	 * handles input, could be placed into a seperate class
 	 */
 	public void handleInput() {
-		if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+		if (Gdx.input.isKeyPressed(Keys.D)) {
 			player.normalWalking(PlayerMovement.RIGHT);
-		} else if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+		} else if (Gdx.input.isKeyPressed(Keys.A)) {
 			player.normalWalking(PlayerMovement.LEFT);
-		} else if (Gdx.input.isKeyPressed(Keys.UP)) {
+		} else if (Gdx.input.isKeyPressed(Keys.W)) {
 			player.normalWalking(PlayerMovement.UP);
-		} else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+		} else if (Gdx.input.isKeyPressed(Keys.S)) {
 			player.normalWalking(PlayerMovement.DOWN);
 		} else {
 			player.setStandingAnimation();
