@@ -50,6 +50,7 @@ public class GameLevel extends GameEntity {
 	@Override
 	public void create() {
 		player = new Player(752, 320);
+
 		player.create();
 
 		guiPlayerStats = new MainGUI(player);
@@ -62,7 +63,7 @@ public class GameLevel extends GameEntity {
 		tiledMap = new TmxMapLoader().load("unbenannt.tmx");
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 
-		collisionObjectLayer = tiledMap.getLayers().get(5);
+		collisionObjectLayer = tiledMap.getLayers().get(6);
 		objects = collisionObjectLayer.getObjects();
 
 		camera.position.set(player.x, player.y, 0);
@@ -79,15 +80,17 @@ public class GameLevel extends GameEntity {
 		tiledMapRenderer.setView(camera);
 
 		camera.update();
+
 		camera.position.set(player.x, player.y, 0);
 		int data[] = { 0, 1, 2, 3 };
+
 		tiledMapRenderer.render(data);
 		spriteBatch.setProjectionMatrix(camera.combined);
 		spriteBatch.begin();
 		spriteBatch.draw(player.currentFrame, player.x, player.y, GameConfig.TILE_SIZE, GameConfig.TILE_SIZE);
+
 		spriteBatch.end();
 		int data2[] = { 4 };
-
 		tiledMapRenderer.render(data2);
 
 		guiPlayerStats.render();
