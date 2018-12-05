@@ -25,6 +25,7 @@ public class MenuButtonsView {
 
 		mainMenuButton = new ImageButton(mainMenuButtonUp);
 		mainMenuButton.getStyle().imageUp = mainMenuButtonUp;
+		mainMenuButton.getStyle().imageDown = mainMenuButtonDown;
 		mainMenuButton.getStyle().imageChecked = mainMenuButtonDown;
 		
 		inventoryButtonUp = new TextureRegionDrawable(
@@ -34,11 +35,12 @@ public class MenuButtonsView {
 
 		inventoryButton = new ImageButton(inventoryButtonUp);
 		inventoryButton.getStyle().imageUp = inventoryButtonUp;
+		inventoryButton.getStyle().imageDown = inventoryButtonDown;
 		inventoryButton.getStyle().imageChecked = inventoryButtonDown;
 
 		menuButtonsTable = new Table();
-		menuButtonsTable.add(mainMenuButton);
-		menuButtonsTable.add(inventoryButton);
+		menuButtonsTable.add(mainMenuButton.padRight(2f));
+		menuButtonsTable.add(inventoryButton.padRight(2f));
 		
 
 	}

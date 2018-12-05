@@ -2,8 +2,10 @@ package com.meier.gui;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class ActionBarSlot {
@@ -21,7 +23,14 @@ public class ActionBarSlot {
 		actionbarButton = new ImageButton(actionBarButtonUp);
 		actionbarButton.getStyle().imageUp = actionBarButtonUp;
 		actionbarButton.getStyle().imageDown = actionBarButtonDown;
+		actionbarButton.getStyle().imageChecked = actionBarButtonDown;
+		actionbarButton.addListener(new ClickListener() {
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				actionbarButton.setChecked(false);
+				super.touchUp(event, x, y, pointer, button);
+			}
+		});
 
-	
 	}
 }
