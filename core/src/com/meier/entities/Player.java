@@ -10,28 +10,42 @@ import com.badlogic.gdx.math.Rectangle;
 import com.meier.behaviour.PlayerMovement;
 import com.meier.config.GameConfig;
 
+/**
+ * Implements core logic that is related to the player. The player is
+ * represented by a hero, with his own sprite
+ * 
+ * @author esadhrbatovic
+ *
+ */
 public class Player extends GameEntity {
 
 	public boolean moving;
 	public PlayerMovement lastmoved = PlayerMovement.NONE;
 	public boolean sprinting;
 	public float sprintSpeed;
-    public Animation<TextureRegion> walkRightAnimation, walkDownAnimation, walkLeftAnimation, walkUpAnimation; // Must declare																										// frame type																										// (TextureRegion)
+	public Animation<TextureRegion> walkRightAnimation, walkDownAnimation, walkLeftAnimation, walkUpAnimation; 
 	public TextureRegion standRight, standDown, standLeft, standUp;
 	public TextureAtlas atlas;
 	public Texture texture;
 	public TextureRegion currentFrame;
 	float stateTime;
-	
+	public int lives;
+
+	/**
+	 * create the player with his position on the map
+	 * @param x x coordinate
+	 * @param y y coordinate
+	 */
 	public Player(float x, float y) {
 		super(x, y);
 		collisionRect = new Rectangle(x + 4, y + 8, GameConfig.TILE_SIZE - 8, GameConfig.TILE_SIZE / 2);
+		lives = 6;
 	}
 
 	@Override
 	public void create() {
 		stateTime = 0f;
-		
+
 		atlas = new TextureAtlas(Gdx.files.internal("hero/hero.atlas"));
 
 		standRight = new TextureRegion(new Texture(Gdx.files.internal("hero/walkright_02.png")));
@@ -44,7 +58,7 @@ public class Player extends GameEntity {
 		walkLeftAnimation = new Animation<TextureRegion>(0.1f, atlas.findRegions("walkleft"), PlayMode.LOOP);
 		walkUpAnimation = new Animation<TextureRegion>(0.1f, atlas.findRegions("walkup"), PlayMode.LOOP);
 		currentFrame = standDown;
-		
+
 		collisionRect = new Rectangle(4, 0, GameConfig.TILE_SIZE - 8, GameConfig.TILE_SIZE / 2);
 	}
 
@@ -57,7 +71,10 @@ public class Player extends GameEntity {
 	public void update() {
 
 	}
-	
+
+	/**
+	 * block playermovement, when colliding
+	 */
 	public void blockMovement() {
 		switch (lastmoved) {
 		case RIGHT:
@@ -75,10 +92,13 @@ public class Player extends GameEntity {
 		default:
 			break;
 		}
-		
+
 		updateCollisionRectangle();
 	}
 
+	/**
+	 * assigns the animation of the player, while standing
+	 */
 	public void setStandingAnimation() {
 
 		switch (lastmoved) {
@@ -99,11 +119,17 @@ public class Player extends GameEntity {
 		}
 	}
 
+	/**
+	 * the collision rectangle follows the player. 
+	 */
 	public void updateCollisionRectangle() {
 		collisionRect.setX(x + 4f);
 		collisionRect.setY(y);
 	}
 
+	/**
+	 * checks weather the player crosses the bounds of the map
+	 */
 	public void checkMapBounds() {
 		if (collisionRect.getX() > GameConfig.SCREEN_WIDTH - GameConfig.TILE_SIZE) {
 			blockMovement();
@@ -117,10 +143,17 @@ public class Player extends GameEntity {
 
 	}
 
+	/**
+	 * makes the player sprint, movement speed = 2
+	 */
 	public void sprint() {
 		sprintSpeed = 2.0f;
 	}
 
+	/**
+	 * walking algorithm of the player
+	 * @param direction in which the player is moving
+	 */
 	public void normalWalking(PlayerMovement direction) {
 		stateTime += Gdx.graphics.getDeltaTime(); // Accumulate elapsed animation time
 		if (sprinting) {
