@@ -15,7 +15,7 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.meier.behaviour.PlayerMovement;
 import com.meier.config.GameConfig;
-import com.meier.gui.GUIPlayerStats;
+import com.meier.gui.MainGUI;
 
 /**
  * Combines all game entities, handles their state, dependencies and rendering.
@@ -41,7 +41,7 @@ public class GameLevel extends GameEntity {
 
 	// the player object
 	Player player;
-	GUIPlayerStats guiPlayerStats;
+	MainGUI guiPlayerStats;
 
 	public GameLevel() {
 
@@ -52,7 +52,7 @@ public class GameLevel extends GameEntity {
 		player = new Player(752, 320);
 		player.create();
 
-		guiPlayerStats = new GUIPlayerStats(player);
+		guiPlayerStats = new MainGUI(player);
 		guiPlayerStats.create();
 		
 		camera = new OrthographicCamera(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT);
@@ -65,7 +65,7 @@ public class GameLevel extends GameEntity {
 		collisionObjectLayer = tiledMap.getLayers().get(5);
 		objects = collisionObjectLayer.getObjects();
 
-		camera.position.set(player.x - GameConfig.TILE_SIZE / 2, player.y + 100, 0);
+		camera.position.set(player.x, player.y, 0);
 
 		spriteBatch = new SpriteBatch();
 	}
