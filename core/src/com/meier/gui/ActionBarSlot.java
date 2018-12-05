@@ -12,8 +12,7 @@ public class ActionBarSlot {
 	Stage stage;
 	ImageButton actionbarButton;
 	TextureRegionDrawable actionBarButtonDown, actionBarButtonUp;
-	
-	
+
 	public void create(Stage stage) {
 		this.stage = stage;
 		actionBarButtonDown = new TextureRegionDrawable(

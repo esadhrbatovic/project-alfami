@@ -20,7 +20,7 @@ import com.meier.gui.MainGUI;
 /**
  * Combines all game entities, handles their state, dependencies and rendering.
  * 
- * @author e.hrbatovic
+ * @author esadhrbatovic
  *
  */
 public class GameLevel extends GameEntity {
@@ -54,7 +54,7 @@ public class GameLevel extends GameEntity {
 
 		guiPlayerStats = new MainGUI(player);
 		guiPlayerStats.create();
-		
+
 		camera = new OrthographicCamera(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT);
 		camera.zoom = 0.5f;
 
@@ -79,7 +79,7 @@ public class GameLevel extends GameEntity {
 		tiledMapRenderer.setView(camera);
 
 		camera.update();
-		camera.position.set(player.x , player.y, 0);
+		camera.position.set(player.x, player.y, 0);
 		int data[] = { 0, 1, 2, 3 };
 		tiledMapRenderer.render(data);
 		spriteBatch.setProjectionMatrix(camera.combined);
@@ -87,11 +87,11 @@ public class GameLevel extends GameEntity {
 		spriteBatch.draw(player.currentFrame, player.x, player.y, GameConfig.TILE_SIZE, GameConfig.TILE_SIZE);
 		spriteBatch.end();
 		int data2[] = { 4 };
-		
+
 		tiledMapRenderer.render(data2);
 
 		guiPlayerStats.render();
-		
+
 	}
 
 	@Override

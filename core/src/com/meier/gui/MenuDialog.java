@@ -14,33 +14,27 @@ public class MenuDialog {
 	Table menuDialogTable;
 	Stage stage;
 	TextButton menuDialogOption;
-	public MenuDialog() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public void create(Stage stage) {
 		this.stage = stage;
 		menuDialogTable = new Table();
-		menuDialogTable.setBackground(new TextureRegionDrawable(
-				new TextureRegion(new Texture("gui/playermenu/menu_dialog.png"))));
+		menuDialogTable.setBackground(
+				new TextureRegionDrawable(new TextureRegion(new Texture("gui/mainmenu/mainmenu_bg.png"))));
 		menuDialogTable.setSize(300, 400);
 		menuDialogTable.setVisible(false);
-		menuDialogTable.setPosition(GameConfig.SCREEN_WIDTH/2-150, GameConfig.SCREEN_HEIGHT/2-200);
+		menuDialogTable.setPosition(GameConfig.SCREEN_WIDTH / 2 - 150, GameConfig.SCREEN_HEIGHT / 2 - 200);
 
 		TextButtonStyle style = new TextButtonStyle();
 		style.font = new BitmapFont();
-		
-		
-		for(int i = 0; i < 5; i ++) {
-			menuDialogOption = new TextButton("menu option" + (i+1), style);
+
+		for (int i = 0; i < 5; i++) {
+			menuDialogOption = new TextButton("menu option" + (i + 1), style);
 			menuDialogOption.padTop(30f);
-			menuDialogTable.add(menuDialogOption);	
+			menuDialogTable.add(menuDialogOption);
 			menuDialogTable.row();
 		}
-		
+
 		stage.addActor(menuDialogTable);
 	}
-	
 
-	
 }

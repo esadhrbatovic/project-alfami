@@ -17,7 +17,7 @@ public class MainGUI {
 
 	HealthBar healthBar;
 	MenuDialog menuDialog;
-	InventoryView inventoryView;
+	Inventory inventoryView;
 	MenuButtonsView menuButtonsView;
 	Actionbar actionBar;
 
@@ -38,7 +38,7 @@ public class MainGUI {
 		menuDialog = new MenuDialog();
 		menuDialog.create(stage);
 
-		inventoryView = new InventoryView();
+		inventoryView = new Inventory();
 		inventoryView.create(stage);
 
 		menuButtonsView = new MenuButtonsView();
@@ -63,14 +63,6 @@ public class MainGUI {
 			}
 		});
 
-		playerMenuTable = new Table();
-		playerMenuTable.setFillParent(true);
-		playerMenuTable.bottom().right().padBottom(40f).padRight(40f);
-		playerMenuTable.add(inventoryView.inventoryTable);
-		playerMenuTable.row();
-		playerMenuTable.add(menuButtonsView.menuButtonsTable).right();
-
-		stage.addActor(playerMenuTable);
 		stage.setDebugAll(false);
 	}
 
@@ -92,7 +84,6 @@ public class MainGUI {
 	public void toggleMainMenu() {
 		if (menuDialog.menuDialogTable.isVisible()) {
 			menuButtonsView.mainMenuButton.setChecked(false);
-			;
 			menuDialog.menuDialogTable.setVisible(false);
 		} else {
 			menuButtonsView.mainMenuButton.setChecked(true);

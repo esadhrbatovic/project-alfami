@@ -26,7 +26,7 @@ public class Actionbar {
 			abs.create(stage);
 			actionBarTable.add(abs.actionbarButton.padLeft(2f));
 		}
-		
+
 		stage.addActor(actionBarTable);
 
 	}
