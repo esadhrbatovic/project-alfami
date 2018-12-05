@@ -39,8 +39,6 @@ public class MenuDialog {
 		}
 		
 		stage.addActor(menuDialogTable);
-		
-	
 	}
 	
 

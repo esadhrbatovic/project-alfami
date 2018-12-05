@@ -18,7 +18,10 @@ public class MainGUI {
 	MenuDialog menuDialog;
 	InventoryView inventoryView;
 	MenuButtonsView menuButtonsView;
-
+	Actionbar actionBar;
+	
+	
+	
 	Table playerMenuTable;
 
 	public MainGUI(Player player) {
@@ -41,6 +44,9 @@ public class MainGUI {
 
 		menuButtonsView = new MenuButtonsView();
 		menuButtonsView.create(stage);
+		
+		actionBar = new Actionbar();
+		actionBar.create(stage, 6);
 		
 		menuButtonsView.mainMenuButton.addListener(new ClickListener() {
 			@Override
@@ -77,22 +83,19 @@ public class MainGUI {
 	public void toggleInventory() {
 		if (inventoryView.inventoryTable.isVisible()) {
 			inventoryView.inventoryTable.setVisible(false);
-			menuButtonsView.inventoryButton.setChecked(false);
 
 		} else {
 			inventoryView.inventoryTable.setVisible(true);
-			menuButtonsView.inventoryButton.setChecked(true);
+
 		}
 	}
 	
 	public void toggleMainMenu() {
 		if (menuDialog.menuDialogTable.isVisible()) {
 			menuDialog.menuDialogTable.setVisible(false);
-			menuButtonsView.mainMenuButton.setChecked(false);
 
 		} else {
 			menuDialog.menuDialogTable.setVisible(true);
-			menuButtonsView.mainMenuButton.setChecked(true);
 		}
 	}
 	
