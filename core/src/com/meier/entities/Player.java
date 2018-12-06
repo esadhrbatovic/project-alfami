@@ -1,6 +1,11 @@
 package com.meier.entities;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
@@ -23,23 +28,26 @@ public class Player extends GameEntity {
 	public PlayerMovement lastmoved = PlayerMovement.NONE;
 	public boolean sprinting;
 	public float sprintSpeed;
-	public Animation<TextureRegion> walkRightAnimation, walkDownAnimation, walkLeftAnimation, walkUpAnimation; 
+	public Animation<TextureRegion> walkRightAnimation, walkDownAnimation, walkLeftAnimation, walkUpAnimation;
 	public TextureRegion standRight, standDown, standLeft, standUp;
 	public TextureAtlas atlas;
 	public Texture texture;
 	public TextureRegion currentFrame;
 	float stateTime;
-	public int lives;
+	public int healthPoints;
+	public int maxHealthPoints;
 
 	/**
 	 * create the player with his position on the map
+	 * 
 	 * @param x x coordinate
 	 * @param y y coordinate
 	 */
 	public Player(float x, float y) {
 		super(x, y);
 		collisionRect = new Rectangle(x + 4, y + 8, GameConfig.TILE_SIZE - 8, GameConfig.TILE_SIZE / 2);
-		lives = 6;
+		healthPoints = 500;
+		maxHealthPoints = 500;
 	}
 
 	@Override
@@ -96,6 +104,24 @@ public class Player extends GameEntity {
 		updateCollisionRectangle();
 	}
 
+	public void takeDamage(int damage) {
+		if (healthPoints - damage >= 0) {
+			this.healthPoints -= damage;
+
+		} else {
+			this.healthPoints = 0;
+		}
+	}
+
+	public void healPlayer(int healing) {
+		if (healthPoints + healing <= maxHealthPoints) {
+			this.healthPoints += healing;
+
+		} else {
+			this.healthPoints = 500;
+		}
+	}
+	
 	/**
 	 * assigns the animation of the player, while standing
 	 */
@@ -120,7 +146,7 @@ public class Player extends GameEntity {
 	}
 
 	/**
-	 * the collision rectangle follows the player. 
+	 * the collision rectangle follows the player.
 	 */
 	public void updateCollisionRectangle() {
 		collisionRect.setX(x + 4f);
@@ -152,6 +178,7 @@ public class Player extends GameEntity {
 
 	/**
 	 * walking algorithm of the player
+	 * 
 	 * @param direction in which the player is moving
 	 */
 	public void normalWalking(PlayerMovement direction) {
@@ -190,4 +217,6 @@ public class Player extends GameEntity {
 		updateCollisionRectangle();
 	}
 
+
+	
 }
