@@ -67,6 +67,7 @@ public class MainGUI {
 	}
 
 	public void render() {
+		healthBar.update();
 		stage.draw();
 	}
 

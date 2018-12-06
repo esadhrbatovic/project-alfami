@@ -1,9 +1,11 @@
 package com.meier.gui;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.meier.config.GameConfig;
 import com.meier.entities.Player;
 
@@ -11,7 +13,7 @@ public class HealthBar {
 	Stage stage;
 	Player player;
 	Table healthTable;
-	int hearts;
+	int fullHearts;
 	int remainingHeartQuarters;
 	int maxHearts;
 
@@ -23,48 +25,53 @@ public class HealthBar {
 		healthTable.setPosition(40, GameConfig.SCREEN_HEIGHT - 40);
 
 		maxHearts = player.maxHealthPoints / 100;
-		hearts = (player.healthPoints / 25) / 4;
+		fullHearts = (player.healthPoints / 25) / 4;
+		remainingHeartQuarters = (int) (((player.healthPoints / 25.0 / 4.0) - fullHearts) / 0.25);
 
-//		remainingHeartQuarters = (int) ((player.maxHealthPoints - player.healthPoints) / 25);
-
-		System.out.println(maxHearts);
-		System.out.println(hearts);
-		System.out.println(player.healthPoints / 25.0 / 4.0);
-		remainingHeartQuarters = (int) (((player.healthPoints / 25.0 / 4.0) - hearts) / 0.25);
-		System.out.println(remainingHeartQuarters);
-		int filledHearts = 0;
-
-		for (int i = 0; i <= maxHearts; i++) {
-			if (i < hearts) {
-				healthTable.add(new Image(new Texture("gui/heart/heart_1.png"))).size(32, 32);
-				filledHearts++;
-			} else if (remainingHeartQuarters > 0) {
-				switch (remainingHeartQuarters) {
-				case 1:
-					healthTable.add(new Image(new Texture("gui/heart/heart_4.png"))).size(32, 32);
-					break;
-				case 2:
-					healthTable.add(new Image(new Texture("gui/heart/heart_3.png"))).size(32, 32);
-					break;
-				case 3:
-					healthTable.add(new Image(new Texture("gui/heart/heart_2.png"))).size(32, 32);
-					break;
-				}
-				filledHearts++;
-				break;
-			}
-		}
-
-		for(int i = 0; i < maxHearts-filledHearts; i++) {
-			healthTable.add(new Image(new Texture("gui/heart/heart_5.png"))).size(32, 32);
+		for (int i = 0; i < maxHearts; i++) {
+			healthTable.add(new Image()).size(32, 32);
 		}
 		healthTable.left().top();
 
 		stage.addActor(healthTable);
 	}
 
+	/**
+	 * rendering hearts according to player's health
+	 */
 	public void update() {
+		int filledHearts = 0;
+		for (int i = 0; i < maxHearts; i++) {
+			if (i < fullHearts) {
+				((Image) healthTable.getCells().get(i).getActor())
+						.setDrawable(new SpriteDrawable(new Sprite(new Texture("gui/heart/heart_1.png"))));
+				filledHearts++;
+			} else if (remainingHeartQuarters > 0) {
+				switch (remainingHeartQuarters) {
+				case 1:
+					((Image) healthTable.getCells().get(i).getActor())
+							.setDrawable(new SpriteDrawable(new Sprite(new Texture("gui/heart/heart_4.png"))));
+					break;
+				case 2:
+					((Image) healthTable.getCells().get(i).getActor())
+							.setDrawable(new SpriteDrawable(new Sprite(new Texture("gui/heart/heart_3.png"))));
+					break;
+				case 3:
+					((Image) healthTable.getCells().get(i).getActor())
+							.setDrawable(new SpriteDrawable(new Sprite(new Texture("gui/heart/heart_2.png"))));
+					break;
+				}
+				filledHearts++;
+				break;
+			}
+		}
+		
+		for (int i = maxHearts - (maxHearts - filledHearts); i < maxHearts; i++) {
 
+			((Image) healthTable.getCells().get(i).getActor())
+					.setDrawable(new SpriteDrawable(new Sprite(new Texture("gui/heart/heart_5.png"))));
+
+		}
 	}
 
 }
