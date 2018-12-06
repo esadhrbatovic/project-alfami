@@ -13,7 +13,7 @@ public class GameApplication extends ApplicationAdapter {
 	public void create() {
 		level = new GameLevel();
 		level.create();
-        
+
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class GameApplication extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	
+
 		level.render();
 	}
 

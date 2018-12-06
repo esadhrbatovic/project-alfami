@@ -25,9 +25,6 @@ public class HealthBar {
 		healthTable.setPosition(40, GameConfig.SCREEN_HEIGHT - 40);
 
 		maxHearts = player.maxHealthPoints / 100;
-		fullHearts = (player.healthPoints / 25) / 4;
-		remainingHeartQuarters = (int) (((player.healthPoints / 25.0 / 4.0) - fullHearts) / 0.25);
-
 		for (int i = 0; i < maxHearts; i++) {
 			healthTable.add(new Image()).size(32, 32);
 		}
@@ -40,6 +37,9 @@ public class HealthBar {
 	 * rendering hearts according to player's health
 	 */
 	public void update() {
+
+		fullHearts = (player.healthPoints / 25) / 4;
+		remainingHeartQuarters = (int) (((player.healthPoints / 25.0 / 4.0) - fullHearts) / 0.25);
 		int filledHearts = 0;
 		for (int i = 0; i < maxHearts; i++) {
 			if (i < fullHearts) {
@@ -65,7 +65,7 @@ public class HealthBar {
 				break;
 			}
 		}
-		
+
 		for (int i = maxHearts - (maxHearts - filledHearts); i < maxHearts; i++) {
 
 			((Image) healthTable.getCells().get(i).getActor())

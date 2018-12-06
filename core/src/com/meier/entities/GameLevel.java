@@ -68,7 +68,7 @@ public class GameLevel extends GameEntity {
 		checkCollisions();
 
 		tiledMapRenderer.setView(camera);
-
+		
 		camera.update();
 
 		camera.position.set(player.x, player.y, 0);

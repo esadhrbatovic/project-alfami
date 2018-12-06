@@ -127,6 +127,11 @@ public class MainGUI {
 					((ImageButton) actionBar.actionBarTable.getCells().get(5).getActor()).toggle();
 
 				}
+				
+				if (keycode == Keys.Q) {
+					player.takeDamage(23);
+					System.out.println(player.healthPoints);
+				}
 				return super.keyDown(event, keycode);
 			}
 
