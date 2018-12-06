@@ -29,7 +29,8 @@ public class Player extends GameEntity {
 	public Texture texture;
 	public TextureRegion currentFrame;
 	float stateTime;
-	public int lives;
+	public int healthPoints;
+	public int maxHealthPoints;
 
 	/**
 	 * create the player with his position on the map
@@ -39,7 +40,8 @@ public class Player extends GameEntity {
 	public Player(float x, float y) {
 		super(x, y);
 		collisionRect = new Rectangle(x + 4, y + 8, GameConfig.TILE_SIZE - 8, GameConfig.TILE_SIZE / 2);
-		lives = 6;
+		healthPoints = 235;
+		maxHealthPoints = 500;
 	}
 
 	@Override

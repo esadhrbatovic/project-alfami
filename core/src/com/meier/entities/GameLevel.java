@@ -24,22 +24,12 @@ import com.meier.gui.MainGUI;
  *
  */
 public class GameLevel extends GameEntity {
-	// sprite batch that renders the player
 	SpriteBatch spriteBatch;
-
-	// loading tiled map
 	TiledMap tiledMap;
 	TiledMapRenderer tiledMapRenderer;
-
-	// main camera - orthographic, follows the player
 	OrthographicCamera camera;
-
-	// collision layer of tiled map
 	MapLayer collisionObjectLayer;
-	// objects of that layer
 	MapObjects objects;
-
-	// the player object
 	Player player;
 	MainGUI guiPlayerStats;
 
@@ -90,7 +80,7 @@ public class GameLevel extends GameEntity {
 		spriteBatch.draw(player.currentFrame, player.x, player.y, GameConfig.TILE_SIZE, GameConfig.TILE_SIZE);
 
 		spriteBatch.end();
-		int data2[] = { 4 };
+		int data2[] = { 4, 5 };
 		tiledMapRenderer.render(data2);
 
 		guiPlayerStats.render();
@@ -111,9 +101,6 @@ public class GameLevel extends GameEntity {
 		}
 	}
 
-	/**
-	 * handles input, could be placed into a seperate class
-	 */
 	public void handleInput() {
 		if (Gdx.input.isKeyPressed(Keys.D)) {
 			player.normalWalking(PlayerMovement.RIGHT);
