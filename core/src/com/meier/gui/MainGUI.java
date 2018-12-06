@@ -130,7 +130,10 @@ public class MainGUI {
 				
 				if (keycode == Keys.Q) {
 					player.takeDamage(23);
-					System.out.println(player.healthPoints);
+				}
+				
+				if (keycode == Keys.E) {
+					player.healPlayer(15);
 				}
 				return super.keyDown(event, keycode);
 			}

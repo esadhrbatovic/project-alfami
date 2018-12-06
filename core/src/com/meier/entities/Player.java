@@ -113,6 +113,15 @@ public class Player extends GameEntity {
 		}
 	}
 
+	public void healPlayer(int healing) {
+		if (healthPoints + healing <= maxHealthPoints) {
+			this.healthPoints += healing;
+
+		} else {
+			this.healthPoints = 500;
+		}
+	}
+	
 	/**
 	 * assigns the animation of the player, while standing
 	 */
