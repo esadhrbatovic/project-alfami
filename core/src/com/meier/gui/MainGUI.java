@@ -105,33 +105,27 @@ public class MainGUI {
 
 				if (keycode == Keys.NUM_1) {
 					((ImageButton) actionBar.actionBarTable.getCells().get(0).getActor()).toggle();
-
 				}
 				if (keycode == Keys.NUM_2) {
 					((ImageButton) actionBar.actionBarTable.getCells().get(1).getActor()).toggle();
-
 				}
 				if (keycode == Keys.NUM_3) {
 					((ImageButton) actionBar.actionBarTable.getCells().get(2).getActor()).toggle();
-
 				}
 				if (keycode == Keys.NUM_4) {
 					((ImageButton) actionBar.actionBarTable.getCells().get(3).getActor()).toggle();
-
 				}
 				if (keycode == Keys.NUM_5) {
 					((ImageButton) actionBar.actionBarTable.getCells().get(4).getActor()).toggle();
-
 				}
 				if (keycode == Keys.NUM_6) {
 					((ImageButton) actionBar.actionBarTable.getCells().get(5).getActor()).toggle();
-
 				}
-				
+
 				if (keycode == Keys.Q) {
 					player.takeDamage(23);
 				}
-				
+
 				if (keycode == Keys.E) {
 					player.healPlayer(15);
 				}
