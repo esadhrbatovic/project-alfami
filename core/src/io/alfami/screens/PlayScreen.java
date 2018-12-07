@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import io.alfami.Alfami;
+import io.alfami.builders.GUIBuilder;
 import io.alfami.builders.WorldBuilder;
 import io.alfami.config.GameConfig;
 import io.alfami.systems.AnimationSystem;
@@ -97,6 +98,8 @@ public class PlayScreen implements Screen {
 
 		stageViewport = new FitViewport(WIDTH, HEIGHT);
 		stage = new Stage(stageViewport, batch);
+		GUIBuilder guiBuilder = new GUIBuilder(stage);
+		guiBuilder.buildUi();
 
 	}
 
@@ -115,6 +118,7 @@ public class PlayScreen implements Screen {
 		if (showBox2DDebuggerRenderer) {
 			box2DDebugRenderer.render(world, camera.combined);
 		}
+		stage.draw();
 
 	}
 

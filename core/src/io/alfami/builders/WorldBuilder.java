@@ -24,6 +24,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import io.alfami.components.AnimationComponent;
+import io.alfami.components.HealthComponent;
 import io.alfami.components.MovementComponent;
 import io.alfami.components.PlayerComponent;
 import io.alfami.components.StateComponent;
@@ -110,6 +111,7 @@ public class WorldBuilder {
 		entity.add(new MovementComponent(body));
 		entity.add(new StateComponent(PlayerComponent.IDLE_DOWN));
 		entity.add(new TextureComponent(textureRegion));
+		entity.add(new HealthComponent(500, 500));
 
 		AnimationComponent animationComponent = new AnimationComponent();
 		Animation<TextureRegion> animation;

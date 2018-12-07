@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.RayCastCallback;
 import com.badlogic.gdx.physics.box2d.World;
 
+import io.alfami.components.HealthComponent;
 import io.alfami.components.MovementComponent;
 import io.alfami.components.PlayerComponent;
 import io.alfami.components.StateComponent;
@@ -23,6 +24,7 @@ public class PlayerSystem extends IteratingSystem {
 	private final ComponentMapper<PlayerComponent> playerM = ComponentMapper.getFor(PlayerComponent.class);
 	private final ComponentMapper<MovementComponent> movementM = ComponentMapper.getFor(MovementComponent.class);
 	private final ComponentMapper<StateComponent> stateM = ComponentMapper.getFor(StateComponent.class);
+	private final ComponentMapper<HealthComponent> playerH = ComponentMapper.getFor(HealthComponent.class);
 
 	private final Vector2 tmpV1 = new Vector2();
 	private final Vector2 tmpV2 = new Vector2();
@@ -44,9 +46,10 @@ public class PlayerSystem extends IteratingSystem {
 		PlayerComponent player = playerM.get(entity);
 		StateComponent state = stateM.get(entity);
 		MovementComponent movement = movementM.get(entity);
-
+		HealthComponent health = playerH.get(entity);
+		
 		Body body = movement.body;
-		if (player.hp > 0) {
+		if (health.healthPoints > 0) {
 			if ((Gdx.input.isKeyPressed(Input.Keys.D) && checkMovable(body, MoveDir.RIGHT))) {
 				body.applyLinearImpulse(tmpV1.set(movement.speed, 0).scl(body.getMass()), body.getWorldCenter(), true);
 
