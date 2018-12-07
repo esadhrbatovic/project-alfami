@@ -74,7 +74,7 @@ public class WorldBuilder {
 			FixtureDef fixtureDef = new FixtureDef();
 			fixtureDef.shape = polygonShape;
 			fixtureDef.filter.categoryBits = GameManager.WALL_BIT;
-			fixtureDef.filter.maskBits = GameManager.PLAYER_BIT | GameManager.GHOST_BIT | GameManager.LIGHT_BIT;
+			fixtureDef.filter.maskBits = GameManager.PLAYER_BIT | GameManager.ENEMY_BIT | GameManager.LIGHT_BIT;
 			body.createFixture(fixtureDef);
 			polygonShape.dispose();
 		}
@@ -95,8 +95,8 @@ public class WorldBuilder {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = circleShape;
 		fixtureDef.filter.categoryBits = GameManager.PLAYER_BIT;
-		fixtureDef.filter.maskBits = GameManager.WALL_BIT | GameManager.GATE_BIT | GameManager.GHOST_BIT
-				| GameManager.PILL_BIT;
+		fixtureDef.filter.maskBits = GameManager.WALL_BIT | GameManager.GATE_BIT | GameManager.ENEMY_BIT
+				| GameManager.POWERUP_BIT;
 		body.createFixture(fixtureDef);
 		circleShape.dispose();
 
