@@ -1,4 +1,4 @@
-package com.meier.gui;
+package legacy.io.alfami.gui;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

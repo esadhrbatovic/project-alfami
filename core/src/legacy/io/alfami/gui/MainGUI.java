@@ -1,4 +1,4 @@
-package com.meier.gui;
+package legacy.io.alfami.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -8,7 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.meier.entities.Player;
+
+import legacy.io.alfami.entities.Player;
 
 public class MainGUI {
 

@@ -1,4 +1,4 @@
-package com.meier.gui;
+package legacy.io.alfami.gui;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -6,7 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.meier.config.GameConfig;
+
+import io.alfami.config.GameConfig;
 
 public class MenuButtonsView {
 	Stage stage;

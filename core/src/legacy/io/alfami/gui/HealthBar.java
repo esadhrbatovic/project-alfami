@@ -1,4 +1,4 @@
-package com.meier.gui;
+package legacy.io.alfami.gui;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -6,8 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
-import com.meier.config.GameConfig;
-import com.meier.entities.Player;
+
+import io.alfami.config.GameConfig;
+import legacy.io.alfami.entities.Player;
 
 public class HealthBar {
 	Stage stage;
