@@ -1,19 +1,15 @@
-package com.meier.entities;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+package legacy.io.alfami.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.meier.behaviour.PlayerMovement;
-import com.meier.config.GameConfig;
+
+import io.alfami.config.GameConfig;
+import legacy.io.alfami.behaviour.PlayerMovement;
 
 /**
  * Implements core logic that is related to the player. The player is
@@ -166,7 +162,6 @@ public class Player extends GameEntity {
 		} else if (collisionRect.getY() > GameConfig.SCREEN_HEIGHT - GameConfig.TILE_SIZE) {
 			blockMovement();
 		}
-
 	}
 
 	/**
@@ -216,7 +211,5 @@ public class Player extends GameEntity {
 		lastmoved = direction;
 		updateCollisionRectangle();
 	}
-
-
 	
 }

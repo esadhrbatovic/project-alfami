@@ -1,4 +1,4 @@
-package com.meier.entities;
+package legacy.io.alfami.entities;
 
 import com.badlogic.gdx.math.Rectangle;
 /**

@@ -1,4 +1,4 @@
-package com.meier.entities;
+package legacy.io.alfami.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -13,9 +13,10 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
-import com.meier.behaviour.PlayerMovement;
-import com.meier.config.GameConfig;
-import com.meier.gui.MainGUI;
+
+import io.alfami.config.GameConfig;
+import legacy.io.alfami.behaviour.PlayerMovement;
+import legacy.io.alfami.gui.MainGUI;
 
 /**
  * Combines all game entities, handles their state, dependencies and rendering.
@@ -68,7 +69,7 @@ public class GameLevel extends GameEntity {
 		checkCollisions();
 
 		tiledMapRenderer.setView(camera);
-		
+
 		camera.update();
 
 		camera.position.set(player.x, player.y, 0);
@@ -114,12 +115,13 @@ public class GameLevel extends GameEntity {
 			player.setStandingAnimation();
 		}
 
-		if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
+		if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
 			player.sprinting = true;
 		}
 
-		if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
+		if (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
 			player.sprinting = false;
 		}
 	}
+
 }

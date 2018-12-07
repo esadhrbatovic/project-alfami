@@ -1,4 +1,4 @@
-package com.meier.behaviour;
+package legacy.io.alfami.behaviour;
 /**
  * enum for different player directions
  * @author esadhrbatovic

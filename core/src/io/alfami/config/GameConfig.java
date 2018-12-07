@@ -1,4 +1,4 @@
-package com.meier.config;
+package io.alfami.config;
 /**
  * static game configuration parameters
  * @author esadhrbatovic
