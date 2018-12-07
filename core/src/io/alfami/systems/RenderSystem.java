@@ -12,7 +12,6 @@ import com.badlogic.gdx.utils.Array;
 
 import io.alfami.components.TextureComponent;
 import io.alfami.components.TransformComponent;
-import io.alfami.gamesys.GameManager;
 
 public class RenderSystem extends IteratingSystem {
 

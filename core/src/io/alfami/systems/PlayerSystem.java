@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
@@ -31,9 +32,11 @@ public class PlayerSystem extends IteratingSystem {
 		UP, DOWN, LEFT, RIGHT
 	}
 
-	public PlayerSystem() {
-		super(Family.all(PlayerComponent.class, MovementComponent.class, StateComponent.class).get());
+	OrthographicCamera camera;
 
+	public PlayerSystem(OrthographicCamera camera) {
+		super(Family.all(PlayerComponent.class, MovementComponent.class, StateComponent.class).get());
+		this.camera = camera;
 	}
 
 	@Override
@@ -58,10 +61,28 @@ public class PlayerSystem extends IteratingSystem {
 
 			}
 		}
-		
-        player.playerAgent.update(deltaTime);
-        state.setState(player.currentState);
 
+		camera.position.set(movement.body.getPosition().x, movement.body.getPosition().y, 0);
+
+		correctCamera();
+		camera.update();
+
+		player.playerAgent.update(deltaTime);
+		state.setState(player.currentState);
+
+	}
+
+	private void correctCamera() {
+		int px = (int) camera.position.x;
+		int py = (int) camera.position.y;
+		float fx = camera.position.x - px;
+		float fy = camera.position.y - py;
+
+		fx = ((int) (fx / camera.zoom)) * camera.zoom;
+		fy = ((int) (fy / camera.zoom)) * camera.zoom;
+
+		camera.position.x = px + fx;
+		camera.position.y = py + fy;
 	}
 
 	private boolean checkMovable(Body body, MoveDir dir) {

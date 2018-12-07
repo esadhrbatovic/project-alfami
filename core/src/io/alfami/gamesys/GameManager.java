@@ -19,7 +19,6 @@ public class GameManager {
     public AssetManager assetManager;
     
     public GameManager() {
-    	System.out.println("loaded atlas");
         assetManager = new AssetManager();
         assetManager.load("hero/hero.atlas", TextureAtlas.class);
 	}
