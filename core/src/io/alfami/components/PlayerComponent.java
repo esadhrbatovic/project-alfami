@@ -23,14 +23,13 @@ public class PlayerComponent implements Component {
     public PlayerAgent playerAgent;
 
 	public int currentState;
-	public int hp;
 
 	public PlayerComponent(Body body) {
 		this.body = body;
         playerAgent = new PlayerAgent(this);
         playerAgent.stateMachine.setInitialState(PlayerState.IDLE_DOWN);
         currentState = IDLE_RIGHT;
-		hp = 500;
+
 	}
 
 	public Body getBody() {

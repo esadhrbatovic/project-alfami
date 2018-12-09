@@ -98,10 +98,8 @@ public enum PlayerState implements State<PlayerAgent> {
 		} else if (velocity.x <= -SPEED_THRESHOLD) {
 			entity.stateMachine.changeState(MOVE_LEFT);
 		} else if (velocity.y >= SPEED_THRESHOLD) {
-			System.out.println("MOVE UP");
 			entity.stateMachine.changeState(MOVE_UP);
 		} else if (velocity.y <= -SPEED_THRESHOLD) {
-			System.out.println("MOVEDOWN");
 			entity.stateMachine.changeState(MOVE_DOWN);
 		}
 	}
