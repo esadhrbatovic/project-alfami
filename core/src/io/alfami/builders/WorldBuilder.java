@@ -23,13 +23,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
 import io.alfami.components.AnimationComponent;
-import io.alfami.components.HealthBarComponent;
 import io.alfami.components.HealthComponent;
 import io.alfami.components.MovementComponent;
 import io.alfami.components.PlayerComponent;
 import io.alfami.components.StateComponent;
 import io.alfami.components.TextureComponent;
 import io.alfami.components.TransformComponent;
+import io.alfami.components.ui.HealthBarComponent;
 import io.alfami.gamesys.GameManager;
 
 public class WorldBuilder {

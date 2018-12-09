@@ -1,4 +1,4 @@
-package io.alfami.components;
+package io.alfami.components.ui;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.Texture;

@@ -17,11 +17,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
-import io.alfami.components.HealthBarComponent;
 import io.alfami.components.HealthComponent;
 import io.alfami.components.MovementComponent;
 import io.alfami.components.PlayerComponent;
 import io.alfami.components.StateComponent;
+import io.alfami.components.ui.HealthBarComponent;
 import io.alfami.gamesys.GameManager;
 
 public class PlayerSystem extends IteratingSystem {
