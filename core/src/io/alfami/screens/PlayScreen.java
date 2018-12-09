@@ -18,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import io.alfami.Alfami;
-import io.alfami.builders.GUIBuilder;
+import io.alfami.builders.GameGUIBuilder;
 import io.alfami.builders.WorldBuilder;
 import io.alfami.config.GameConfig;
 import io.alfami.systems.AnimationSystem;
@@ -31,7 +31,7 @@ public class PlayScreen implements Screen {
 	private final float WIDTH = GameConfig.SCREEN_WIDTH;
 	private final float HEIGHT = GameConfig.SCREEN_HEIGHT;
 
-	private final Alfami game;
+//	private final Alfami game;
 	private SpriteBatch batch;
 
 	private FitViewport viewport;
@@ -51,13 +51,15 @@ public class PlayScreen implements Screen {
 	private FitViewport stageViewport;
 	private Stage stage;
 
+	private WorldBuilder worldBuilder;
+	private GameGUIBuilder guiBuilder;
+
 	private World world;
 	private Box2DDebugRenderer box2DDebugRenderer;
 	private boolean showBox2DDebuggerRenderer;
 
-
 	public PlayScreen(Alfami game) {
-		this.game = game;
+//		this.game = game;
 		this.batch = game.batch;
 	}
 
@@ -89,17 +91,21 @@ public class PlayScreen implements Screen {
 		box2DDebugRenderer = new Box2DDebugRenderer();
 		showBox2DDebuggerRenderer = false;
 		Parameters params = new Parameters();
-//		params.textureMinFilter = TextureFilter.Linear;
+		params.textureMinFilter = TextureFilter.Linear;
 		params.textureMagFilter = TextureFilter.Nearest;
 		tiledMap = new TmxMapLoader().load("startarea.tmx", params);
 
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, batch);
-		new WorldBuilder(tiledMap, world, engine).buildAll();
 
 		stageViewport = new FitViewport(WIDTH, HEIGHT);
 		stage = new Stage(stageViewport, batch);
-		GUIBuilder guiBuilder = new GUIBuilder(stage);
+
+		guiBuilder = new GameGUIBuilder(stage);
 		guiBuilder.buildUi();
+
+		worldBuilder = new WorldBuilder(tiledMap, world, engine, stage);
+		worldBuilder.buildMap();
+		worldBuilder.buildPlayer(752, 200);
 
 	}
 
